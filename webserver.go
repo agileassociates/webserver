@@ -49,7 +49,7 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
     fmt.Println("Something went wrong!")
   }
 
-  rows, err := database.Query("INSERT INTO users (user_nickname, user_first, user_last, username, user_email) VALUES (NewUser.Name, NewUser.First, NewUser.Last, NewUser.Email)")
+  rows, err := database.Query("INSERT INTO users (user_nickname, user_first, user_last, user_email) VALUES($1,$2,$3,$4)", NewUser.Name, NewUser.First, NewUser.Last, NewUser.Email)
   if err != nil {
     fmt.Println(err)
   }
